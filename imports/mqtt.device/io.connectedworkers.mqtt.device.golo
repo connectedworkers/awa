@@ -1,6 +1,9 @@
 ----
 This is a little fluent DSL "around" Paho client library
+
 see [Paho java client library](http://www.eclipse.org/paho/files/javadoc/overview-summary.html)
+
+
 sample: 
 
 	let mybroker = broker()
