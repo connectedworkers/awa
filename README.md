@@ -6,7 +6,7 @@ Several DSL about IOT (with #gololang) | awa (Maori) = river
 
 ##Dependencies
 
-- `git submodule add https://github.com/connectedworkers/dsl.adapters`
+- `cd imports` then  `git submodule add https://github.com/connectedworkers/dsl.adapters`
 
 
 
