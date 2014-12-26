@@ -3,7 +3,31 @@ This is a little fluent DSL "around" Paho client library
 see [Paho java client library](http://www.eclipse.org/paho/files/javadoc/overview-summary.html)
 sample: 
 
-	#TODO
+	let mybroker = broker()
+		: protocol("tcp")
+		: host("localhost")
+		: port(1883)
+
+	let options = mqttHelper(): getConnectOptions()
+
+	let johnDoeDevice = mqttDevice(): broker(mybroker): connectOptions(options): initialize()
+
+	johnDoeDevice
+		: messageArrived(|topic, message| { 
+				println("["+ johnDoeDevice: id() +"] you've got a mail : " + topic + " | " + message)
+				johnDoeDevice: topic("all"): content("I've got a mail!"): publish()
+			})
+
+	johnDoeDevice: connect()
+		: onSet(|token| {
+			println("id: " + johnDoeDevice: id() + " is connected | token: " + token)
+			johnDoeDevice: subscribe("hi")
+		}): onFail(|error| {
+			println("Huston, we've got a problem:")
+			println(JSON.stringify(error))
+		})			
+
+
 ----
 module io.connectedworkers.mqtt.device
 
