@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Documentation for io.connectedworkers.mqtt.device</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      color: #333;
+      background-color: #fff;
+      border-color: #999999;
+      border-width: 2px;
+      line-height: 1.5;
+      margin: 2em 3em 2em 20%;
+      text-align: left;
+      padding: 0 100px 0 100px;
+    }
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      overflow: auto;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+      font-size: 80%;
+      background-color: #eee;
+      padding: 1px 3px;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
+    }
+    pre code {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    li p {
+      margin: 0.3em;
+    }
+    ul > li {
+      list-style-type: disc;
+    }
+    a:link, a:visited {
+      color: #33e;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #00f;
+      text-decoration:underline;
+    }
+    h1 {
+      color: #999;
+      font-weight: 400;
+      font-size: 36px;
+    }
+    h2 {
+      border-bottom: 1px dotted #aaa;
+      margin-bottom: 1em;
+      color: #333;
+      font-size: 30px;
+    }
+    h3 {
+      color: #666;
+      font-size: 24px;
+    }
+    h4 {
+      font-size: 21px;
+    }
+    h5 {
+      font-size: 18px;
+    }
+
+    #toc {
+      margin: 0;
+      padding: 1em;
+      border-right: 1px solid #aaa;
+      font-size: 80%;
+      position: fixed;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      width: 20%;
+      overflow: auto;
+      white-space: nowrap;
+    }
+
+    #toc ul {
+      padding-left: 1em;
+    }
+
+    #toc > li {
+      list-style: none;
+      margin-bottom: 1ex;
+    }
+
+    #toc > li > a {
+      font-weight: bold;
+    }
+
+    :target {
+      background-color: yellow;
+    }
+
+    .permalink {
+      margin-left: .3em;
+      font-size: 70%;
+      visibility: hidden;
+    }
+
+    *:hover > .permalink {
+      visibility: visible;
+    }
+
+  </style>
+</head>
+<body>
+<h1>Documentation for io.connectedworkers.mqtt.device</h1>
+<div>
+  <p>This is a little fluent DSL "around" Paho client library
+see <a href="http://www.eclipse.org/paho/files/javadoc/overview-summary.html">Paho java client library</a>
+sample:</p>
+<pre><code>#TODO
+</code></pre>
+
+</div>
+
+<!-- begin table of content -->
+<ul id="toc">
+
+  
+  <li><a href="#structs">Structs</a><ul>
+    
+    <li><a href="#actionListenerError">actionListenerError</a></li>
+    
+    <li><a href="#broker">broker</a></li>
+    
+    <li><a href="#mqttDevice">mqttDevice</a></li>
+    
+    <li><a href="#mqttHelper">mqttHelper</a></li>
+    
+  </ul></li>
+  
+
+  
+
+  
+  <li><a href="#augmentations">Augmentations</a><ul>
+    
+    <li><a href="#augment.broker">broker</a><ul>
+      
+      <li><a href="#broker.url_this">url(this)</a></li>
+      
+    </ul></li>
+    
+    <li><a href="#augment.mqttDevice">mqttDevice</a><ul>
+      
+      <li><a href="#mqttDevice.activateCallBacks_this">activateCallBacks(this)</a></li>
+      
+      <li><a href="#mqttDevice.connect_this">connect(this)</a></li>
+      
+      <li><a href="#mqttDevice.connect_this_success_failed">connect(this, success, failed)</a></li>
+      
+      <li><a href="#mqttDevice.disconnect_this">disconnect(this)</a></li>
+      
+      <li><a href="#mqttDevice.disconnect_this_onSuccess_onFailure">disconnect(this, onSuccess, onFailure)</a></li>
+      
+      <li><a href="#mqttDevice.getMqttClient_this">getMqttClient(this)</a></li>
+      
+      <li><a href="#mqttDevice.initialize_this_clientId">initialize(this, clientId)</a></li>
+      
+      <li><a href="#mqttDevice.initialize_this">initialize(this)</a></li>
+      
+      <li><a href="#mqttDevice.publish_this">publish(this)</a></li>
+      
+      <li><a href="#mqttDevice.publish_this_onSuccess_onFailure">publish(this, onSuccess, onFailure)</a></li>
+      
+      <li><a href="#mqttDevice.subscribe_this_topic">subscribe(this, topic)</a></li>
+      
+      <li><a href="#mqttDevice.subscribe_this_topic_success_failed">subscribe(this, topic, success, failed)</a></li>
+      
+      <li><a href="#mqttDevice.syncConnect_this">syncConnect(this)</a></li>
+      
+      <li><a href="#mqttDevice.syncDisconnect_this">syncDisconnect(this)</a></li>
+      
+      <li><a href="#mqttDevice.syncPublish_this">syncPublish(this)</a></li>
+      
+      <li><a href="#mqttDevice.syncSubscribe_this_topic">syncSubscribe(this, topic)</a></li>
+      
+      <li><a href="#mqttDevice.syncUnsubscribe_this_topic">syncUnsubscribe(this, topic)</a></li>
+      
+    </ul></li>
+    
+    <li><a href="#augment.mqttHelper">mqttHelper</a><ul>
+      
+      <li><a href="#mqttHelper.getConnectOptions_this_cleanSession">getConnectOptions(this, cleanSession)</a></li>
+      
+      <li><a href="#mqttHelper.getConnectOptions_this">getConnectOptions(this)</a></li>
+      
+    </ul></li>
+    
+  </ul></li>
+  
+
+  
+  <li><a href="#functions">Functions</a><ul>
+    
+    <li><a href="#actionListenerCallback_onSuccessCbk_onFailureCbk">actionListenerCallback(onSuccessCbk, onFailureCbk)</a></li>
+    
+    <li><a href="#mqttCallback_messageArrivedCbk_deliveryCompleteCbk_connectionLostCbk">mqttCallback(messageArrivedCbk, deliveryCompleteCbk, connectionLostCbk)</a></li>
+    
+  </ul></li>
+  
+</ul>
+<!-- end table of content -->
+
+
+  <h2 id="structs">Structs</h2>
+  
+    <h3 id="actionListenerError">actionListenerError
+    <a class="permalink" href="#actionListenerError" title="link to this section">&#182;</a></h3>
+
+    <h5>Members</h5>
+    <ul>
+    
+      <li><code>token</code></li>
+  
+      <li><code>exception</code></li>
+  
+    </ul>
+    <div>
+      <p>Used to pass error when actionListenerCallback is used with promises</p>
+
+    </div>
+  
+    <h3 id="broker">broker
+    <a class="permalink" href="#broker" title="link to this section">&#182;</a></h3>
+
+    <h5>Members</h5>
+    <ul>
+    
+      <li><code>protocol</code></li>
+  
+      <li><code>host</code></li>
+  
+      <li><code>port</code></li>
+  
+    </ul>
+    <div>
+      <p>Mqtt Broker structure (helper/reference to the mqtt server)</p>
+<p>Use:</p>
+
+    </div>
+  
+    <h3 id="mqttDevice">mqttDevice
+    <a class="permalink" href="#mqttDevice" title="link to this section">&#182;</a></h3>
+
+    <h5>Members</h5>
+    <ul>
+    
+      <li><code>id</code></li>
+  
+      <li><code>topic</code></li>
+  
+      <li><code>content</code></li>
+  
+      <li><code>broker</code></li>
+  
+      <li><code>qos</code></li>
+  
+      <li><code>connectOptions</code></li>
+  
+      <li><code>messageArrived</code></li>
+  
+      <li><code>deliveryComplete</code></li>
+  
+      <li><code>connectionLost</code></li>
+  
+      <li><code>_client</code></li>
+  
+    </ul>
+    <div>
+      <p>Mqtt device structure</p>
+<p>It's a decorator (or proxy ?) around MqttAsyncClient</p>
+<p><code>messageArrived</code>, <code>deliveryComplete</code> and <code>connectionLost</code> are references to the handler methods of the <code>MqttCallback</code> adapter</p>
+
+    </div>
+  
+    <h3 id="mqttHelper">mqttHelper
+    <a class="permalink" href="#mqttHelper" title="link to this section">&#182;</a></h3>
+
+    <h5>Members</h5>
+    <ul>
+    
+      <li><code>_foo</code></li>
+  
+    </ul>
+    <div>
+      <p>Mqtt helper, kind of class with tool-belt methods</p>
+
+    </div>
+  
+
+
+
+
+
+
+
+  <h2 id="augmentations">Augmentations</h2>
+  
+    <h3 id="augment.broker">broker
+    <a class="permalink" href="#augment.broker" title="link to this section">&#182;</a></h3>
+    <div>
+      <p>Broker augmentations</p>
+
+    </div>
+    
+    
+      
+        <h4 id="broker.url_this">url(this)
+      
+      <a class="permalink" href="#broker.url_this" title="link to this section">&#182;</a></h4>
+      <div>
+        <p><code>url</code> method returns the url of the mqtt broker built from the broker structure properties</p>
+
+      </div>
+    
+  
+    <h3 id="augment.mqttDevice">mqttDevice
+    <a class="permalink" href="#augment.mqttDevice" title="link to this section">&#182;</a></h3>
+    <div>
+      <p>mqttDevice augmentations</p>
+
+    </div>
+    
+    
+      
+        <h4 id="mqttDevice.activateCallBacks_this">activateCallBacks(this)
+      
+      <a class="permalink" href="#mqttDevice.activateCallBacks_this" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Set the mqtt callback of the device (MqttClient)</p>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.connect_this">connect(this)
+      
+      <a class="permalink" href="#mqttDevice.connect_this" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Asynchronous connection returning a promise</p>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.connect_this_success_failed">connect(this, success, failed)
+      
+      <a class="permalink" href="#mqttDevice.connect_this_success_failed" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Asynchronous connection with actionListenerCallback</p>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.disconnect_this">disconnect(this)
+      
+      <a class="permalink" href="#mqttDevice.disconnect_this" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Asynchronous disconnection returning a promise</p>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.disconnect_this_onSuccess_onFailure">disconnect(this, onSuccess, onFailure)
+      
+      <a class="permalink" href="#mqttDevice.disconnect_this_onSuccess_onFailure" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Asynchronous disconnection with actionListenerCallback</p>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.getMqttClient_this">getMqttClient(this)
+      
+      <a class="permalink" href="#mqttDevice.getMqttClient_this" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>MqttAsyncClient factory
+Used by</p>
+<ul>
+<li><code>initialize</code> method</li>
+</ul>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.initialize_this_clientId">initialize(this, clientId)
+      
+      <a class="permalink" href="#mqttDevice.initialize_this_clientId" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>This is the constructor of the mqtt device
+You've to call it only after defining(setting) properties</p>
+<ul>
+<li>default value of <code>qos</code> is <code>0</code></li>
+<li><code>id</code> of the device is a parameter of the constructor</li>
+</ul>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.initialize_this">initialize(this)
+      
+      <a class="permalink" href="#mqttDevice.initialize_this" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>This is the constructor of the mqtt device
+You've to call it only after defining(setting) properties</p>
+<ul>
+<li>default value of <code>qos</code> is <code>0</code></li>
+<li><code>id</code> of the device is automatically generated</li>
+</ul>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.publish_this">publish(this)
+      
+      <a class="permalink" href="#mqttDevice.publish_this" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Asynchronous publication of content property value to the current topic returning a promise</p>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.publish_this_onSuccess_onFailure">publish(this, onSuccess, onFailure)
+      
+      <a class="permalink" href="#mqttDevice.publish_this_onSuccess_onFailure" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Asynchronous publication of content property value to the current topic with actionListenerCallback</p>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.subscribe_this_topic">subscribe(this, topic)
+      
+      <a class="permalink" href="#mqttDevice.subscribe_this_topic" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Asynchronous topic subscription returning a promise</p>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.subscribe_this_topic_success_failed">subscribe(this, topic, success, failed)
+      
+      <a class="permalink" href="#mqttDevice.subscribe_this_topic_success_failed" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Asynchronous topic subscription with actionListenerCallback</p>
+<p>see: <a href="http://www.eclipse.org/paho/files/javadoc/org/eclipse/paho/client/mqttv3/MqttAsyncClient.html#subscribe(java.lang.String[], int[], java.lang.Object, org.eclipse.paho.client.mqttv3.IMqttActionListener)">http://www.eclipse.org/paho/files/javadoc/org/eclipse/paho/client/mqttv3/MqttAsyncClient.html#subscribe(java.lang.String[], int[], java.lang.Object, org.eclipse.paho.client.mqttv3.IMqttActionListener)</a></p>
+<p>TODO:</p>
+<ul>
+<li>subscribe to several topics</li>
+</ul>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.syncConnect_this">syncConnect(this)
+      
+      <a class="permalink" href="#mqttDevice.syncConnect_this" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Synchronous connection <em>(to be tested)</em></p>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.syncDisconnect_this">syncDisconnect(this)
+      
+      <a class="permalink" href="#mqttDevice.syncDisconnect_this" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Synchronous disconnection <em>(to be tested)</em></p>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.syncPublish_this">syncPublish(this)
+      
+      <a class="permalink" href="#mqttDevice.syncPublish_this" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Synchronous publication of content property value to the current topic <em>(to be tested)</em></p>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.syncSubscribe_this_topic">syncSubscribe(this, topic)
+      
+      <a class="permalink" href="#mqttDevice.syncSubscribe_this_topic" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Synchronous topic subscription <em>(to be tested)</em></p>
+
+      </div>
+    
+      
+        <h4 id="mqttDevice.syncUnsubscribe_this_topic">syncUnsubscribe(this, topic)
+      
+      <a class="permalink" href="#mqttDevice.syncUnsubscribe_this_topic" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>Synchronous topic un-subscription <em>(to be tested)</em></p>
+<p>TODO:</p>
+<ul>
+<li>Asynchronous methods</li>
+</ul>
+
+      </div>
+    
+  
+    <h3 id="augment.mqttHelper">mqttHelper
+    <a class="permalink" href="#augment.mqttHelper" title="link to this section">&#182;</a></h3>
+    <div>
+      <p>mqttHelper augmentations</p>
+
+    </div>
+    
+    
+      
+        <h4 id="mqttHelper.getConnectOptions_this_cleanSession">getConnectOptions(this, cleanSession)
+      
+      <a class="permalink" href="#mqttHelper.getConnectOptions_this_cleanSession" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>return MqttConnectOptions</p>
+<p>Holds the set of options that control how the client connects to a server.</p>
+<ul>
+<li>see <a href="http://www.eclipse.org/paho/files/javadoc/org/eclipse/paho/client/mqttv3/MqttConnectOptions.html">http://www.eclipse.org/paho/files/javadoc/org/eclipse/paho/client/mqttv3/MqttConnectOptions.html</a></li>
+</ul>
+
+      </div>
+    
+      
+        <h4 id="mqttHelper.getConnectOptions_this">getConnectOptions(this)
+      
+      <a class="permalink" href="#mqttHelper.getConnectOptions_this" title="link to this section">&#182;</a></h4>
+      <div>
+        <p>return MqttConnectOptions</p>
+<p>Holds the set of options that control how the client connects to a server.</p>
+<p>usage:</p>
+<pre><code>let options = mqttHelper(): getConnectOptions()
+</code></pre>
+<ul>
+<li>see <a href="http://www.eclipse.org/paho/files/javadoc/org/eclipse/paho/client/mqttv3/MqttConnectOptions.html">http://www.eclipse.org/paho/files/javadoc/org/eclipse/paho/client/mqttv3/MqttConnectOptions.html</a></li>
+</ul>
+
+      </div>
+    
+  
+
+
+
+  <h2 id="functions">Functions</h2>
+  
+    <h3 id="actionListenerCallback_onSuccessCbk_onFailureCbk">actionListenerCallback(onSuccessCbk, onFailureCbk)
+    <a class="permalink" href="#actionListenerCallback_onSuccessCbk_onFailureCbk" title="link to this section">&#182;</a></h3>
+    <div>
+      <p>IMqttActionListener adapter</p>
+<ul>
+<li>see <a href="http://www.eclipse.org/paho/files/javadoc/org/eclipse/paho/client/mqttv3/IMqttActionListener.html">http://www.eclipse.org/paho/files/javadoc/org/eclipse/paho/client/mqttv3/IMqttActionListener.html</a></li>
+</ul>
+<p>Implementors of this interface will be notified when an asynchronous action completes.
+A listener is registered on an MqttToken and a token is associated with an action like connect or publish.
+When used with tokens on the MqttAsyncClient the listener will be called back on the MQTT client's thread.
+The listener will be informed if the action succeeds or fails.
+It is important that the listener returns control quickly otherwise the operation of the MQTT client will be stalled.</p>
+
+    </div>
+  
+    <h3 id="mqttCallback_messageArrivedCbk_deliveryCompleteCbk_connectionLostCbk">mqttCallback(messageArrivedCbk, deliveryCompleteCbk, connectionLostCbk)
+    <a class="permalink" href="#mqttCallback_messageArrivedCbk_deliveryCompleteCbk_connectionLostCbk" title="link to this section">&#182;</a></h3>
+    <div>
+      <p>MqttCallback adapter</p>
+<ul>
+<li>see <a href="http://www.eclipse.org/paho/files/javadoc/org/eclipse/paho/client/mqttv3/MqttCallback.html">http://www.eclipse.org/paho/files/javadoc/org/eclipse/paho/client/mqttv3/MqttCallback.html</a></li>
+</ul>
+<p>Enables an application to be notified when asynchronous events related to the client occur.
+Classes implementing this interface can be registered on both types of client:
+- IMqttClient.setCallback(MqttCallback)
+- and IMqttAsyncClient.setCallback(MqttCallback)</p>
+
+    </div>
+  
+
+
+</body>
+</html>
