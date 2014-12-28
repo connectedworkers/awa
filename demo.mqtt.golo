@@ -2,6 +2,7 @@
 First, launch the broker:
 
 	cd mqtt-broker/moquette/bin
+	rm *.log
 	./moquette.sh
 
 Then run the demo:

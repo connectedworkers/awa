@@ -3,4 +3,5 @@ mqtt-broker/moquette/bin/*.log
 *.iml
 *.iws
 .idea/
+samples/sphero/with-cylon/node_modules/
 

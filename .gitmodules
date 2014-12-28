@@ -1,3 +1,6 @@
 [submodule "imports/dsl.adapters"]
 	path = imports/dsl.adapters
 	url = https://github.com/connectedworkers/dsl.adapters
+[submodule "imports/toolbelt"]
+	path = imports/toolbelt
+	url = https://github.com/connectedworkers/toolbelt
