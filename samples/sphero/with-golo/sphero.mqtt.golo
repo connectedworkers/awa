@@ -8,6 +8,7 @@ First, launch the broker:
 Then run the demo:
 
 		./go.sh
+		
 ----
 module sphero.mqtt
 
