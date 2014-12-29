@@ -8,7 +8,7 @@ First, launch the broker:
 Then run the demo:
 
 		./go.sh
-		
+
 ----
 module sphero.mqtt
 
@@ -16,6 +16,9 @@ import io.connectedworkers.mqtt.device
 import io.connectedworkers.toolbelt.time.helper
 import io.connectedworkers.toolbelt.math.helper
 import io.connectedworkers.toolbelt.files.helper
+import io.connectedworkers.toolbelt.dynamic.helper
+
+import mqtt.config
 
 function main = |args| {
 
@@ -26,39 +29,71 @@ function main = |args| {
 
 	let options = mqttHelper(): getConnectOptions()
 
-	# qos is 0 by default
-	let bobDevice = mqttDevice(): broker(mybroker): connectOptions(options): initialize("bob")
+	let mqtt_device = mqttDevice(): broker(mybroker)
+		: connectOptions(options)
+		: initialize("bob")
 
-	bobDevice
+	mqtt_device
 		: messageArrived(|topic, message| { 
-				println("["+ bobDevice: id() +"] you've got a mail : " + topic + " | " + message)
-				# never publish here on a subscribed topic by the current device
+				println("["+ mqtt_device: id() +"]: " + topic + " | " + message)
 			})
-		: connectionLost(|error| -> println("ouch"))
 
-	let dynamicController = DynamicObject()
+	let dynamicSphero = DynamicObject()
+		: define("rnd", |this, min, max| {
+				return rndInteger(min, max)
+			})
+		: define("publish", |this, topic, content| {
+				mqtt_device: topic(topic): content(content): publish()
+			})
 
-	bobDevice: connect()
+	# load abilities
+	let loadAbilities = -> dynamicPlugin()
+		: where("abilities/main.golo")
+		: from("getMain")					
+		: graft(dynamicSphero)	
+		: implant()
+
+	# watcher
+	let sentry = watcher(): directory("abilities")
+		: callBack(|watchEvent, folderName|{ 
+				println("=> " + 
+					watchEvent: kind() + " " + 
+					watchEvent: context() + " " + 
+					folderName
+				)
+
+				# load abilities ... again
+				loadAbilities()
+
+			})
+		: supervise("Supervising ...")
+
+	
+
+	mqtt_device: connect()
 		: onSet(|token| {
-			println("id: " + bobDevice: id() + " is connected | token: " + token)
-			#bobDevice: subscribe("hello")
+				println("id: " + mqtt_device: id() + " is connected | token: " + token)
 
-			# load plugin here
-			# then listen to change
-			every(): ms(500_L): times(50): do({
-				bobDevice: topic("hello"): content(
-					JSON.stringify(DynamicObject()
-						: colorIndex(rndInteger(0,2))
-						: speed(rndInteger(0,60))
-						: direction(rndInteger(0,360))
-					)
-				): publish()
+				loadAbilities()
+
+				try {
+
+					every(): ms(500_L): do({
+						dynamicSphero: roll()
+					})
+
+					#every(): ms(500_L): times(50): do({
+					#	dynamicSphero: roll()
+					#})
+					
+				} catch(e) {
+					println(e)
+				}
+			
+			}): onFail(|error| {
+				println("Huston, we've got a problem:")
+				println(JSON.stringify(error))
 			})
-
-		}): onFail(|error| {
-			println("Huston, we've got a problem:")
-			println(JSON.stringify(error))
-		})
 
 
 

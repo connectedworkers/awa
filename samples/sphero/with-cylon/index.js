@@ -15,9 +15,21 @@ var COLORS = {
   YELLOW: 0xffff00
 };
 
-var COLORS_PRIMARY = [
-  COLORS.RED, COLORS.GREEN, COLORS.BLUE
+var COLORS_ALL = [
+  COLORS.RED, 
+  COLORS.GREEN, 
+  COLORS.BLUE, 
+  COLORS.ORANGE, 
+  COLORS.PINK, 
+  COLORS.PURPLE, 
+  COLORS.WHITE, 
+  COLORS.YELLOW, 
+  COLORS.BLACK
 ];
+
+var COLORS_NAMES = [
+  "red", "green", "blue", "orange", "pink", "purple", "white", "yellow", "black"
+]
 
 var randomPrimary = function() {
   var index = Math.floor(Math.random()*COLORS_PRIMARY.length);
@@ -42,18 +54,19 @@ Cylon.robot({
 
   work: function(my) {
 
-    my.server.subscribe('hello');
+    my.server.subscribe('hello'); // listen to hello topic
 
     // start sphero
     my.sphero.roll(5, Math.floor(Math.random() * 360));
     my.sphero.setRGB(COLORS.GREEN);
+    // sphero is started
 
     // change only if message
     my.server.on('message', function (topic, data) {
       console.log("[Sphero] I've got a message on topic: " + topic + ": " + data);
       var cmds = JSON.parse(data)
-      my.sphero.roll(cmds.speed, Math.floor(Math.random() * 360));
-      my.sphero.setRGB(COLORS_PRIMARY[cmds.index]);
+      my.sphero.setRGB(COLORS_ALL[cmds.colorIndex]);
+      my.sphero.roll(cmds.speed, cmds.direction);
     });
 
   }

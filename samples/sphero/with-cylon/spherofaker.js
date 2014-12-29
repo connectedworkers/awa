@@ -17,7 +17,15 @@ var COLORS = {
 };
 
 var COLORS_ALL = [
-  COLORS.RED, COLORS.GREEN, COLORS.BLUE, COLORS.ORANGE, COLORS.PINK, COLORS.PURPLE, COLORS.WHITE, COLORS.YELLOW, COLORS.BLACK
+  COLORS.RED, 
+  COLORS.GREEN, 
+  COLORS.BLUE, 
+  COLORS.ORANGE, 
+  COLORS.PINK, 
+  COLORS.PURPLE, 
+  COLORS.WHITE, 
+  COLORS.YELLOW, 
+  COLORS.BLACK
 ];
 
 var COLORS_NAMES = [
@@ -47,11 +55,21 @@ Cylon.robot({
       },
       setRGB: function(color) {
         var index = COLORS_ALL.indexOf(color)
-        console.log(colors[getColorName(index)]("[setRGB] color: %s | %s"), color, getColorName(index))
+        /*
+        pink -> magenta 4 
+        purple -> cyan 5
+        orange -> yellow 3
+        */
+        var colorName = getColorName(index)
+        if(colorName=="pink") {colorName="magenta"}
+        if(colorName=="purple") {colorName="cyan"}
+        if(colorName=="orange") {colorName="yellow"}
+
+        console.log(colors[colorName]("[setRGB] color: %s | %s"), color, getColorName(index), colorName)
       }
     }
 
-    my.server.subscribe('hello');
+    my.server.subscribe('hello'); // listen to hello topic
 
     // start sphero
     my.sphero.roll(5, Math.floor(Math.random() * 360));
